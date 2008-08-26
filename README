@@ -1,10 +1,12 @@
+dialog_messages V 0.1
+=====================
 This plugin allows users of your application to exchange private messages. Beside the basic infrastructure of models it
 provides a inbox and a dialog like messages presentation as know from ichat or the iphone sms app, including endless scrolling.
 
 Installation
 ============
 
-Get the plugin with script/plugin git://github.com/thilo/dialog_messages.
+Get the plugin with script/plugin install git://github.com/thilo/dialog_messages.
 
 * Engines
 Additionally you need engines >= 1.2. If you don't use it yet here a short installation guide
@@ -44,7 +46,11 @@ To customize the inbox you can create your own index.html.erb in your_app/app/vi
 Same works for all other views that you will find under the appv/iews dir in the plugin.
 
 
+Open Issues
+===========
 
+I still have to find a way to get the controller specs running. 
+No test for the acts_as_dialog_message_peer module
 
 
 
