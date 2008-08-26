@@ -1,0 +1,12 @@
+<ul>
+<%- @dialogs.each do |dialog| -%>
+  <li>
+    <div id="<%= dom_id(dialog) %>">
+      Last Message: <%= time_ago_in_words(dialog.created_at) %>
+      <%= link_to 'Read More', list_dialogs_path(:user_id => dialog.pair.id)%>
+      
+      <%= partial 'messages/message', :message => dialog.message %>
+    </div>
+  </li>
+<%- end -%>
+</ul>

@@ -1,0 +1,28 @@
+<%- content_for(:head) do -%> <%= javascript_include_tag 'endless_page', :plugin => 'dialog_messages' %> <%- end -%>
+
+
+<h2>Conversation</h2>
+<div id="message_errors"></div>
+<%- remote_form_for @message do |f| -%>
+  <%= f.hidden_field :receiver_id %>
+  <%= f.text_area :content, :onkeypress => "if (this.scrollHeight > this.clientHeight && !window.opera)\n this.rows += 1;", 
+  :rows => 1, :style => 'width: 390px' %><br/>
+  <%= submit_tag 'Send' %> oder <%= link_to_function 'Back', "history.back()" %>
+<%- end -%>
+<div id="reply"></div>
+<div id="messages">
+  <%= partial 'dialogs', :messages => @dialogs %>
+</div>
+<p id="loading">Loading more page results...</p>
+<script type="text/javascript">
+  function checkScroll() {
+    if (nearBottomOfPage()) {
+      currentPage++;
+      new Ajax.Request('<%= list_dialogs_path(:user_id => @message.receiver.id) %>&page=' + currentPage , {asynchronous:true, evalScripts:true, method:'get'});
+    } else {
+      setTimeout("checkScroll()", 250);
+    }
+  }
+  
+  document.observe('dom:loaded', checkScroll);
+</script>

@@ -1,0 +1,51 @@
+This plugin allows users of your application to exchange private messages. Beside the basic infrastructure of models it
+provides a inbox and a dialog like messages presentation as know from ichat or the iphone sms app, including endless scrolling.
+
+Installation
+============
+
+Get the plugin with script/plugin git://github.com/thilo/dialog_messages.
+
+* Engines
+Additionally you need engines >= 1.2. If you don't use it yet here a short installation guide
+
+Install it with script/plugin discover; script/plugin install engines;
+Now you have to add the following in your applications environment rb right after your require rails boot.rb file.
+
+require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
+
+now back to setting up dialog messages.
+
+* Plugin
+The plugin require that your application provide a current_user method to get the logged in user. 
+If you use acts_as_authenticated it comes for free otherwise you may just create a alias for a similar method.
+
+To use the endless scrolling the plugin need to include a javascript into the views. 
+So add <%= yield :head %> inside the layout head.
+
+With script/generate plugin_migration you will get a migration that adds a messages and a dialogs table to your database. 
+Don't forget to call rake db:migrate to create these tables.
+
+To add the messaging abilities to the User add acts_as_dialod_message_pair to your user model.
+
+Now you are ready to roll. 
+
+Usage
+=====
+
+To get to the inbox, just provide a link to dialogs_path. 
+
+To sending a message just point a link to list_dialogs_path(:user_id => receiver_id) where receiver_id is the id of the receiving user.
+
+Customization
+=============
+
+To customize the inbox you can create your own index.html.erb in your_app/app/views/dialogs to overwrite the template that comes with the plugin.
+Same works for all other views that you will find under the appv/iews dir in the plugin.
+
+
+
+
+
+
+

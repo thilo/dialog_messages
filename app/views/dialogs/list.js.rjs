@@ -1,0 +1,6 @@
+page.insert_html :bottom, :messages, :partial => 'dialogs', :dialogs => @dialogs
+if @dialogs.total_pages > @dialogs.current_page
+  page.call 'checkScroll'
+else
+  page[:loading].hide
+end

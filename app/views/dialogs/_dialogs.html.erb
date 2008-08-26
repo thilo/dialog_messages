@@ -1,0 +1,13 @@
+<%- last_date = nil -%>
+
+<%- dialogs.each do |dialog| -%>
+  <%- if last_date.blank? || (dialog.created_at + 20.minutes) <  last_date -%>
+    <%- last_date = dialog.created_at -%>
+    <div style="text-align:center; width: 390px; color:#808080; font-size: 12px"><%= time_ago_in_words(last_date) %></div>
+  <%- end -%>
+  <div style="<%= dialog.kind == 'sender' ? 'margin-left:0px' : 'margin-left:140px; text-align:right'  %>; width: 250px; margin-bottom: 20px">
+    <div class="talk">
+      <%= h(dialog.message.content) %>
+    </div>
+  </div>
+<%- end -%>

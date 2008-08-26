@@ -1,0 +1,7 @@
+if @message.new_record?
+  page.replace_html 'message_errors', @message.errors.full_messages
+else
+  page.replace_html 'message_errors', ''
+  page.insert_html :after, 'reply',  :partial => 'message', :message => @message
+  page << "$('message_content').value = ''"
+end
