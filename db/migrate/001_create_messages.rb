@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.text "content"
       t.integer "sender"
-      t.iteger "receiver"
+      t.integer "receiver"
     end
   end
 
