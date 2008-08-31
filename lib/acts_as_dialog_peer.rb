@@ -12,7 +12,7 @@ module ActsAsDialogPeer
          end
       
          def recent
-          with_scope :find  => {:select => 'MAX(dialogs.id) AS id, user_id, MAX(dialogs.created_at) AS created_at, pair_id, MAX(message_id) AS message_id', :group => 'pair_id', :order => 'created_at', :include => 'message'} do
+          with_scope :find  => {:select => 'MAX(dialogs.id) AS id, user_id, MAX(dialogs.created_at) AS created_at, pair_id, MAX(message_id) AS message_id', :group => 'pair_id', :order => 'created_at DESC', :include => 'message'} do
             find :all
           end
         end
