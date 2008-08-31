@@ -1,11 +1,8 @@
 class Message < ActiveRecord::Base
   unloadable
   
-  attr_accessor :receiver_id
-  attr_accessor :sender_id
-  attr_reader :sender
-  attr_reader :receiver
-  
+  belongs_to :receiver, :class_name => "User", :foreign_key => "receiver_id"
+  belongs_to :sender, :class_name => "User", :foreign_key => "sender_id"
   has_many :dialogs
   
   after_create :create_dialogs
@@ -15,15 +12,6 @@ class Message < ActiveRecord::Base
   validates_presence_of :receiver_id, :on => :create
   validates_presence_of :content, :message => "Please enter a message."
   
-  def sender=(value)
-    @sender = value
-    self.sender_id = value.id if value
-  end
-
-  def receiver=(value)
-    @receiver = value
-    self.receiver_id = value.id if value
-  end
 
   private
   

@@ -1,21 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 
-describe "receiver=" do
-  it "should set the receiver_id to id of the receiver" do
-    receiver = stub('receiver', :id => 2)
-    message = Message.new :receiver => receiver
-    message.receiver_id.should == 2
-  end
-end
-
-describe "sender=" do
-  it "should set the sender_id to id of the sender" do
-    sender = stub('sender', :id => 3)
-    message = Message.new :sender => sender
-    message.sender_id.should == 3
-  end
-end
 
 describe Message, 'create' do
   before(:each) do
