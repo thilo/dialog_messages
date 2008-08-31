@@ -2,8 +2,8 @@ class CreateMessages < ActiveRecord::Migration
   def self.up
     create_table :messages do |t|
       t.text "content"
-      t.integer "sender"
-      t.integer "receiver"
+      t.integer "sender_id"
+      t.integer "receiver_id"
     end
   end
 
