@@ -28,7 +28,9 @@ So add <%= yield :head %> inside the layout head.
 With script/generate plugin_migration you will get a migration that adds a messages and a dialogs table to your database. 
 Don't forget to call rake db:migrate to create these tables.
 
-To add the messaging abilities to the User add acts_as_dialod_message_pair to your user model.
+To add the messaging abilities to the User add acts_as_dialod_message_peer to your user model.
+
+At last add map.from_plugin 'dialog_messages' to your routes.rb
 
 Now you are ready to roll. 
 
