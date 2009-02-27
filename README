@@ -30,6 +30,8 @@ Don't forget to call rake db:migrate to create these tables.
 
 To add the messaging abilities to the User add acts_as_dialog_peer to your user model.
 
+At last add map.from_plugin 'dialog_messages' to your routes.rb
+
 Now you are ready to roll. 
 
 Usage
