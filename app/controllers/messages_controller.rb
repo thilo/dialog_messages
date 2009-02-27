@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new params[:message]
-    @message.sender  = logged_in_user
+    @message.sender  = current_user
     @message.save
     respond_to do |format|
       format.js

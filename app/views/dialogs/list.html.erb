@@ -11,7 +11,7 @@
 <%- end -%>
 <div id="reply"></div>
 <div id="messages">
-  <%= partial 'dialogs', :messages => @dialogs %>
+  <%= render :partial => 'dialogs', :locals => {:messages => @dialogs} %>
 </div>
 <p id="loading">Loading more page results...</p>
 <script type="text/javascript">

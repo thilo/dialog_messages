@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   end
 end
 
+class User
+end
+
 Dir.glob(PLUGIN_ROOT + "/app/**/*.rb") do |file|
   require file
 end
